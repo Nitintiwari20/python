@@ -1,0 +1,11 @@
+import requests
+import json
+query=input("What news are you interested in?")
+url=f"https://newsapi.org/v2/everything?q={query}&from=2024-08-03&sortBy=popularity&apiKey=API_KEY"
+r=requests.get(url)
+news=json.loads(r.text)
+i=1
+for article in news["articles"]:
+    print(f'{i}. {article["title"]}')
+    print(article["description"])
+    i+=1
